@@ -78,7 +78,7 @@ def analyze(request):
 			note=1
 		else:
 			note=0
-		return render(request, 'pweb/analyze.html', {'note':note, 'final_command':result})
+		return render(request, 'pweb/analyze.html', {'note':note, 'final_command':final_command})
 	else:
 		return render(request, 'pweb/analyze.html')
 
