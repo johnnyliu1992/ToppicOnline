@@ -67,8 +67,8 @@ def analyze(request):
 			pre_toppic_command=pre_toppic_command+'-n '
 		run_toppic_command=pre_toppic_command+data_file_name
 		'''final command'''
-		final_command=go_to_data_folder_command+' &&'+run_toppic_command
-		#result=subprocess.check_output(final_command, shell=True).decode("utf-8")
+		final_command=go_to_data_folder_command+' &&'+' cd ../toppic-linux-1.1.2/'+' && '+'ls'#run_toppic_command
+		result=subprocess.check_output(final_command, shell=True).decode("utf-8")
 		'''check output'''
 		check_output_command=go_to_data_folder_command+' && ' +'ls'# /b'
 		request.session['check_output_command']=check_output_command#store check_output_command to session
