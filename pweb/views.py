@@ -52,7 +52,7 @@ def analyze(request):
 		snr=request.POST.get('snr')
 		piws=request.POST.get('piws')
 		ms1spec=request.POST.get('ms1spec')
-		pre_toppic_command=' ../toppic-windows-1.1.2/topfd '
+		pre_toppic_command=' ../toppic-linux-1.1.2/topfd '
 		if maxcs != '':
 			pre_toppic_command=pre_toppic_command+'-c '+maxcs+' '
 		if maxmm != '':
