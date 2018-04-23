@@ -42,7 +42,7 @@ def analyze(request):
 	if request.method=='POST':
 		data_file_name=list(Document.objects.all().values_list('document',flat=True))[0].split('/')[1]
 		request.session['data_file_name']=data_file_name#get data file name into session
-		data_path=settings.MEDIA_ROOT+'\\'+'toppic_data_to_use'
+		data_path=settings.MEDIA_ROOT+'/'+'toppic_data_to_use'
 		request.session['data_path']=data_path#get data path into session
 		go_to_data_folder_command='cd'+' '+data_path
 		'''toppic command'''
@@ -52,7 +52,7 @@ def analyze(request):
 		snr=request.POST.get('snr')
 		piws=request.POST.get('piws')
 		ms1spec=request.POST.get('ms1spec')
-		pre_toppic_command=' ..\\toppic-windows-1.1.2\\topfd '
+		pre_toppic_command=' ../toppic-windows-1.1.2/topfd '
 		if maxcs != '':
 			pre_toppic_command=pre_toppic_command+'-c '+maxcs+' '
 		if maxmm != '':
@@ -70,7 +70,7 @@ def analyze(request):
 		final_command=go_to_data_folder_command+'&&'+run_toppic_command
 		result=subprocess.check_output(final_command, shell=True).decode("utf-8")
 		'''check output'''
-		check_output_command=go_to_data_folder_command+' && ' +'dir /b'
+		check_output_command=go_to_data_folder_command+' && ' +'ls'# /b'
 		request.session['check_output_command']=check_output_command#store check_output_command to session
 		check_output_num=subprocess.check_output(check_output_command, shell=True).decode("utf-8").split('\r\n')
 		check_output_num=len(check_output_num)
@@ -99,7 +99,7 @@ def result(request):
 	
 def download(request,file_name):
 	data_path = request.session['data_path']
-	file_path = data_path+'\\'+file_name
+	file_path = data_path+'/'+file_name
 	file_wrapper = FileWrapper(open(file_path))
 	file_mimetype = mimetypes.guess_type(file_path)
 	response = HttpResponse(file_wrapper, content_type=file_mimetype )
@@ -110,7 +110,7 @@ def download(request,file_name):
 	
 def download_sample(request,file_name):
 	data_path = settings.MEDIA_ROOT
-	file_path = data_path+'\\'+file_name
+	file_path = data_path+'/'+file_name
 	file_wrapper = FileWrapper(open(file_path))
 	file_mimetype = mimetypes.guess_type(file_path)
 	response = HttpResponse(file_wrapper, content_type=file_mimetype )
