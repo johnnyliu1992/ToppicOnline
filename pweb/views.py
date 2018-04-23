@@ -31,8 +31,8 @@ def index(request):
 		if documents!=[]:
 			i_clean=Document.objects.all().delete()
 			documents=[]
-			go_to_data_folder_command='cd '+settings.MEDIA_ROOT+'\\'+'toppic_data_to_use'
-			clean_previous_data_command=go_to_data_folder_command+' && '+'del * /S /Q'
+			go_to_data_folder_command='cd '+settings.MEDIA_ROOT+'/'+'toppic_data_to_use'
+			clean_previous_data_command=go_to_data_folder_command+' && '+'rm *'# /S /Q'
 			clean_previous_data=subprocess.check_output(clean_previous_data_command, shell=True).decode("utf-8").replace('\r\n','')
 		return render(request, 'pweb/index.html', {'form': form, 'documents':documents})
 
