@@ -1,0 +1,36 @@
+{% load static%}
+
+
+<html>
+<head>
+<title>Toppic Online</title>
+<link rel="stylesheet" href="{% static 'pweb/style.css' %}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'pweb/bootstrap-responsive.css' %}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'pweb/bootstrap.css' %}" type="text/css" media="all">
+<style>
+li {
+    margin: 25px;
+	font-size: 20;
+}
+</style>
+</head>
+
+<body style="overflow-y:scroll">
+  <div class="container">
+    <div class="masthead">
+	  <h1 class="muted"><font color="#0066DD">Toppic Suite Online</font></h1>
+	</div>
+	<div class="row-fluid" style="font-size:16px">
+	{% block content %}
+    {% endblock %}
+	</div>
+
+
+
+
+  </div>
+</body>
+
+
+
+</html>

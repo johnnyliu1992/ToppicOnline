@@ -1,0 +1,50 @@
+{% extends 'pweb/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<h2>Parameters Define:</h2>
+<br>
+
+
+<div display="center">
+
+<form action="{% url 'analyze' %}" method="POST"> 
+{% csrf_token %}
+
+<p>Maximum charge state of precursor and fragment ions:</p>
+<input type="text" name="maxcs" style="width: 250px;" placeholder="Default is 30 <a positive integer>">
+
+<p>maximum monoisotopic mass of precursor and fragment ions:</p>
+<input type="text" name="maxmm" style="width: 250px;" placeholder="Default is 100,000 Dalton <a positive number>">
+
+<p>Error tolerance of m/z values of spectral peaks:</p>
+<input type="text" name="et" style="width: 250px;" placeholder="Default is 0.02 m/z <a positive number>">
+
+<p>Signal/noise ratio:</p>
+<input type="text" name="snr" style="width: 250px;" placeholder="Default is 1 <a positive number>">
+
+<p>Precursor isolation window size:</p>
+<input type="text" name="piws" style="width: 250px;" placeholder="Default is 3.0 m/z <a positive number>">
+
+<p><input type="radio" name="ms1spec" value="">The input spectrum file does not contain MS1 spectra.</p>
+
+<br>
+<input type="submit" value="Analyze"><br>
+<p><font color="FF5733">(Please waite for sometime after click analyze button, link of result page will be shown below once calculation is done.)</font></p>
+</form>
+
+
+<br><br>
+{% if note == 1 %}
+<h3>Your result is ready! Click follwing button to go to download page.</h3>
+<form action="{% url 'result' %}" method="POST"> 
+{% csrf_token %}
+<input type="submit" value="Go to download result">
+</form>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

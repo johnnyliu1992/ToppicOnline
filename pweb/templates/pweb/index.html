@@ -1,0 +1,31 @@
+{% extends 'pweb/base.html' %}
+{% block content %}
+{% load static %}
+<br>
+<form method="post" enctype="multipart/form-data">
+  <h2>Upload your data</h2>
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Upload</button>
+</form>
+
+
+<br><br>
+
+{% if documents %}
+<h2>The file you uploaded is:</h2>
+{{ documents }}
+
+
+<br>
+<br>
+<form action="{% url 'analyze' %}" method="GET"> 
+{% csrf_token %}
+<input type="submit" value="Proceed to analyze">
+</form>
+{% endif %}
+
+<br><br><br><br>
+<p>Sample data for analyzing can be downloaded <a href="/pweb/download_sample/sample.mzML">here</a>.</p>
+
+{% endblock %}

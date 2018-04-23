@@ -1,0 +1,15 @@
+{% extends 'pweb/base.html' %}
+{% block content %}
+{% load static %}
+
+<br><br>
+<h2>Here is a list of results for down load:</h2>
+<ol> 
+{% for file in output_files%}
+<li>
+{{file}}
+<a href="/pweb/download/{{file}}">Download</a><br>
+</li>
+{% endfor %}
+</ol>
+{% endblock %}
