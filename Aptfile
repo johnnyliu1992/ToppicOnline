@@ -1,4 +1,3 @@
-cmake
 libpwiz-dev
 zlib1g-dev
 libboost-filesystem-dev
@@ -8,3 +7,4 @@ libboost-thread-dev
 libxalan-c-dev
 catch
 qtbase5-dev
+heroku 
