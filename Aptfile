@@ -1,3 +1,4 @@
+cmake
 libpwiz-dev
 zlib1g-dev
 libboost-filesystem-dev
